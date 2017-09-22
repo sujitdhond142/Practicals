@@ -18,13 +18,24 @@ struct st{
 	int val;
 	char type;
 }e[15];
+struct lt{
+	char name[8];
+	int lc;
+}lt[10];
+struct ic{
+	char ch1[8];
+	char ch2[8];
+	char ch3[8];
+	char ch4[8];
+}ic[40];
 int main()
 { 
 	FILE *fp;
 	char tan[5],tab[5],tbn[5],tbb[5];
 	char ch1[5],ch2[5],ch3[5],ch4[5];
 	fp=fopen("1.asm","r");		//this is the asm file which we have to convert to machine lang
-	int i,j,flag=0;
+	int i,j,k,flag=0;
+	int total_st,total_lt,total_ic;
 	//Entering data in Machine Op-code Table
         strcpy(a[0].name,"LOAD");
 	strcpy(a[0].binr,"0000");
@@ -90,31 +101,53 @@ int main()
 
 	//Here we read data from file and store it in symbol table accordingly
 	i=0;
+	j=0;
+	k=0;
 	flag=0;
 	while(fscanf(fp,"%s%s%s%s",ch1,ch2,ch3,ch4)!=EOF)
 	{
 //		printf("\n%s\t%s\t%s\t%s",ch1,ch2,ch3,ch4);
+		strcpy(ic[k].ch1,ch1);
+		strcpy(ic[k].ch2,ch2);
+		strcpy(ic[k].ch3,ch3);
+		strcpy(ic[k].ch4,ch4);
 		if(strcmp(ch1,"**")!=0){
 			strcpy(e[i].name,ch1);
 			if((strcmp(ch2,"DCbb")==0)||(strcmp(ch2,"EQUb")==0)){
-				printf("1");
 				e[i].val=atoi(ch3);
-				printf("2");
 				e[i].type='A';
 			}else{
-				printf("3");
 				e[i].val=flag;
-				printf("4");
 				e[i].type='R';
-				printf("5");
 			}
 		i++;
 		}
+		if(ch4[0]=='='){
+			strcpy(lt[j].name,ch4);
+			j++;
+		}
 		flag+=4;
+		k++;
 	}
+	total_st=i;
+	total_lt=j;
+	for(i=0;i<j;i++,flag+=4){
+		strcpy(ic[i+k].ch1,lt[i].name);
+		lt[i].lc=flag;
+	}
+	k=j+k;	//here value of k will be the total value of initial k instructions plus added j literal symbols
+	total_ic=k;
 	printf("\n\tSymbol Table");
-	for(j=0;j<i;j++){
-		printf("\n%s\t%d\t%c",e[j].name,e[j].val,e[j].type);
+	for(i=0;i<total_st;i++){
+		printf("\n%s\t%d\t%c",e[i].name,e[i].val,e[i].type);
+	}
+	printf("\n\tLiteral Table");
+	for(i=0;i<total_lt;i++){
+		printf("\n%s\t%d",lt[i].name,lt[i].lc);
+	}
+	printf("\n\tIntermediate Code");
+	for(i=0;i<total_ic;i++){
+		printf("\n%s\t%s\t%s\t%s",ic[i].ch1,ic[i].ch2,ic[i].ch3,ic[i].ch4);
 	}
 	fclose(fp);
 	return 0;
