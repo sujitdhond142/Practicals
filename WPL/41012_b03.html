@@ -1,0 +1,88 @@
+<!--
+    Aim : Develop and demonstrate a XHTML file that includes Javascript that uses functions for the following problems:
+		a. Parameter: A string
+			  Output: The position in the string of the left-most vowel
+		b. Parameter: A number
+			  Output: The number with its digits in the reverse order
+
+    Name : Sujit Prakash Dhond
+    PRN  : 1541012
+    Class: T.Y.B.Tech.
+    Batch: T1
+-->
+
+<!doctype html PUBLIC "-//W3C//DTD// XHTML 1.0 //EM"
+ "http://w3.org/TR/xhtml1/DTD/xhtml1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+	<title>
+		String
+	</title>
+	<center>
+	<h2>
+		String Vowel
+	</h2>
+	<body>
+		<p id="p_result">
+		</p>
+		<input type="text" placeholder="enter string" id="id_input"/>
+		<input type="button" value="click to get leftmost vowel" id="id_button" onclick="abc()"/>
+		<br>
+		<p id="p_result_no"><p/>
+		<input type="number" placeholder="enter number" id="id_input_no"/>
+		<input type="button" value="click to get reverse no" id="id_button_no" onclick="reverse()"/>
+	</body>
+	</center>
+
+	<script type="text/javascript">
+		function abc(){
+			var str = document.getElementById("id_input").value;
+			document.getElementById("p_result").innerHTML=str;
+			for(var i=0;i<str.length;i++){
+				var s = str.charAt(i);
+				switch(s){
+					case 'a':
+						ans('a',i);
+						return;
+					case 'e':
+						ans('e',i);
+						return;
+					case 'i':
+						ans('i',i);
+						return;
+					case 'o':
+						ans('o',i);
+						return;
+					case 'u':
+						ans('u',i);
+						return;
+					case 'A':
+						ans('A',i);
+						return;
+					case 'E':
+						ans('E',i);
+						return;
+					case 'I':
+						ans('I',i);
+						return;
+					case 'O':
+						ans('O',i);
+						return;
+					case 'U':
+						ans('U',i);
+						return;
+					default :
+						break;
+				}
+			}
+			document.getElementById("p_result").innerHTML="No vowels in string";
+		}
+		function ans(str,i){
+			document.getElementById("p_result").innerHTML="First vowel from left : <strong>"+str+"</strong> at positon : <strong>"+(i+1)+"</strong>";
+		}
+		function reverse(){
+			var no = document.getElementById("id_input_no").value;
+			document.getElementById("p_result_no").innerHTML="Reverse no : "+no.split("").reverse().join("");
+		}
+	</script>
+</html>

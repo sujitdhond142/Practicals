@@ -1,0 +1,62 @@
+<!--
+    Aim : Develop and demonstrate, using Javascript, a XHTML document that:
+        a. Collects the USN 
+            ( the valid format is: A digit from 1 to 4 followed by two upper-case characters 
+            followed by two digits followed by two upper- case characters 
+            followed by three digits; no embedded spaces allowed) of the user. 
+            Event handler must be included for the form element that collects this information to validate the input.
+            Messages in the alert windows must be produced when errors are detected.
+        b. Modify the above program to get the current semester also 
+            (restricted to be a number from 1 to 8).
+
+    Name : Sujit Prakash Dhond
+    PRN  : 1541012
+    Class: T.Y.B.Tech.
+    Batch: T1
+-->
+<!doctype html PUBLIC "-//W3C//DTD// XHTML 1.0 //EM"
+ "http://w3.org/TR/xhtml1/DTD/xhtml1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+	<title>
+		USN
+	</title>
+	<center>
+	<h2>
+		USN
+	</h2>
+	<body>
+		<p id="p_result">
+		</p>
+		<input type="text" placeholder="enter string" id="id_input"/>
+		<input type="button" value="select" id="id_button" onclick="usn1()"/>
+		<br>
+		<p id="p_result_no"><p/>
+		<input type="number" placeholder="enter semester number" id="id_input_str1"/>
+		<input type="button" value="select" id="id_button_no" onclick="usn2()"/>
+	</body>
+	</center>
+
+	<script type="text/javascript">
+		function usn1(){
+			var strng = document.getElementById("id_input").value;
+			var pattern = /^[1-4][A-Z][A-Z][0-9][0-9][A-Z][A-Z][0-9][0-9][0-9]$/;
+			if(strng.match(pattern)==strng){
+				document.getElementById("p_result").innerHTML="Valid String";
+			}else{
+				document.getElementById("p_result").innerHTML="Invalid String";
+				alert("String is not valid");
+			}
+		}
+		function usn2(){
+			var strng = document.getElementById("id_input_str1").value;
+			var pattern = /[1-8]/;
+			if(strng.match(pattern)==strng){
+				document.getElementById("p_result_no").innerHTML="Valid Semester";
+			}else{
+				document.getElementById("p_result_no").innerHTML="Invalid Semester";
+				alert("Semester not valid.\nEnter no between 1-8");
+			}
+		}
+	</script>
+</html>

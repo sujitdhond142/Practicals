@@ -1,0 +1,50 @@
+<!--
+    Aim : Develop and demonstrate a XHTML file that includes Javascript for the following problems:
+        a. Input : A number n obtained using prompt.
+            Output : The first n Fibonacci numbers.
+        b. Input : A number n obtained using prompt.
+            Output : A table of numbers from 1 to n and their squares using alert
+
+    Name : Sujit Prakash Dhond
+    PRN  : 1541012
+    Class: T.Y.B.Tech.
+    Batch: T1
+-->
+<!doctype html PUBLIC "-//W3C//DTD// XHTML 1.0 //EM"
+ "http://w3.org/TR/xhtml1/DTD/xhtml1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
+	<title>
+		Fibonacci and Squares
+	</title>
+	<center>
+	<body>
+	</body>
+	</center>
+
+	<script type="text/javascript">
+		var n=prompt("Enter any int no ");
+		var a=0;
+		var b=1;
+		var i=0;
+        var fbalert = "Fibonacci series\n"
+        fbalert+=b+"\n";
+		for(i=2;i<=n;i++){
+			var x=b;
+			b+=a;
+			a=x;
+            fbalert+=b+"\n";
+		}
+        alert(fbalert);
+		var n=prompt("Enter any int no ");
+		var i=0;
+		var sqalert="Squares of numbers\n";
+		if(n<=0){
+			alert("Enter no greater than zero ");
+		}
+		for(i=1;i<=n;i++){
+			sqalert += i+" : "+i*i+"\n";
+		}
+		alert(sqalert);
+	</script>
+</html>

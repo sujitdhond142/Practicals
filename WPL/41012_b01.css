@@ -1,0 +1,29 @@
+/*
+    External stylesheet for designing webpage
+
+    Name : Sujit Prakash Dhond
+    PRN  : 1541012
+    Class: T.Y.B.Tech.
+    Batch: T1
+
+*/
+
+*{
+	margin:0px;
+	border-collapse:collapse;
+	font-family:sans-serif;
+}
+th{
+	background:#b2b2b2;
+}
+td,th{
+	text-align:center;
+	padding:7px;
+}
+h2{
+	padding-top: 20px;
+	color:green;
+}
+h2 span{
+	color: red;
+}
